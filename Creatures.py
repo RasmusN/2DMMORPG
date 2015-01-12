@@ -1,4 +1,5 @@
 #! /usr/bin/python
+import Map
 
 class Creature(object):
     """All living things should inherit from this class"""
@@ -19,13 +20,19 @@ class Creature(object):
 class Human(Creature):
     __id = None
     __name = ""
+        
+    Map = None
     
-    def __init__(self, name, age = 0, x = 10, y = 10):
+    def __init__(self, connection, name, age = 0, x = 10, y = 10):
         self.__name = name
         self.__age = age
+
+        self.x, self.y = x, y
+        
+        self.Map = Map.Map(connection)
         
     def image(self):
         pass
         
- 
+        
     

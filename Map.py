@@ -1,9 +1,16 @@
+#Length of the longest side of the map (square?)
+LENGTH = 100
 
 class Map(object):
-    """Class handles the visual world"""
+    """Class handles the visual world
+    
+        The coordinates are defined in the same way as pixels are defined.
+        X goes from left to right
+        Y goes from top to bottom
+    """
     
     #The world is 100x100 squares
-    the_world = [[None for x in range(100)] for x in range(100)] 
+    world = [[None for x in range(100)] for x in range(100)] 
     
     def __init__(self, connection):
         
@@ -15,7 +22,7 @@ class Map(object):
         
     def __load_map(self):
         """Loads map from prev. sessions"""
-        self.the_world =  [[2 for x in range(100)] for x in range(100)]
+        self.world =  [[1 for x in range(100)] for x in range(100)]
         
     
         
