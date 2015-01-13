@@ -6,12 +6,13 @@ class ClientToServer(object):
     __logged_in = False
     __username = ""
     
+    observer = None
     def __init__(self, ip, port, username, hns_password):
         """
         Connect to server
         """
         self.username = username
-        pass
+        
     
     def login(username, hns_password):
         """Request to login"""

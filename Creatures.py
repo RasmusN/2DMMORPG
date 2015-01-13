@@ -8,15 +8,27 @@ class Creature(object):
     #__position = []
     x = 0
     y = 0
+    direction = "up"
+
     
     def __init__(self, connection):
         pass    
     
     def move(self, direction):
         """"""
-        pass
-    
-    
+        if direction == "left":
+            self.x -= 1
+            self.direction = "left"
+        elif direction == "right":
+            self.x += 1
+            self.direction = "right"
+        elif direction == "up":
+            self.y -= 1
+            self.direction = "up"
+        elif direction == "down":
+            self.y += 1
+            self.direction = "down"
+            
 class Human(Creature):
     __id = None
     __name = ""

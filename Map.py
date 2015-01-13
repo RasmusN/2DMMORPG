@@ -24,6 +24,12 @@ class Map(object):
         """Loads map from prev. sessions"""
         self.world =  [[1 for x in range(100)] for x in range(100)]
         
+        #A small river
+        self.world[14][14] = 3
+        self.world[14][13] = 3
+        self.world[14][12] = 3
+        self.world[14][11] = 3
+        self.world[14][10] = 3
     
         
 Unknown = None

@@ -7,10 +7,10 @@ import Creatures, pygame, time, Map
 from c2s import ClientToServer
 import __future__
 
-FPS = 60
-resolution = [800, 800]
+FPS = 15
+resolution = [800, 640]
 
-visible_squares = [15, 15] #
+visible_squares = [17, 17] #
 
 #XY square_size
 square_size = [int(resolution[0]/visible_squares[0]),
@@ -21,10 +21,10 @@ print "Square size", square_size, "pxl/sqare"
 
 #Colors
 white = (255,255,255)
-black = (0,0,0)
-red   = (255, 0,   0)
-green = (0, 155,   0)
-blue  = (0,   0, 255)
+black = (  0,  0,  0)
+red   = (255,  0,  0)
+green = (0,  155,  0)
+blue  = (0,    0,255)
 
 def global_xy_to_local_xy(x, y, hero):
     """Converts to global xy-coordinates to local coordinates relative
@@ -76,8 +76,6 @@ def draw_field_of_view(gameDisplay, hero):
             g_x, g_y = local_xy_to_global_xy(x, y, hero)
             p_x, p_y = local_xy_to_pxy(x, y)
             
-            print "Trying to paint ", x, y, p_x, p_y
-            
             if not hero.Map.world[g_x][g_y]:
                 """This should only be the case if the player
                 is within sight of the edge of earth"""
@@ -90,7 +88,7 @@ def draw_field_of_view(gameDisplay, hero):
                 pygame.draw.rect(gameDisplay, green, 
                                 [p_x, p_y,square_size[0], square_size[1]])
                                 
-            else:
+            elif hero.Map.world[g_x][g_y] == 3:
                 pygame.draw.rect(gameDisplay, blue, 
                                 [p_x, p_y, square_size[0], square_size[1]])
                 
@@ -142,6 +140,18 @@ def game_loop(connection):
             if event.type == pygame.QUIT:
                 game_exit = True
     
+        if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    hero.move("left")
+                    
+                if event.key == pygame.K_RIGHT:
+                    hero.move("right")
+                    
+                if event.key == pygame.K_UP:
+                    hero.move("up")
+                    
+                if event.key == pygame.K_DOWN:
+                    hero.move("down")
     
         draw_field_of_view(gameDisplay, hero)
 
@@ -150,6 +160,8 @@ def game_loop(connection):
                                 
         #Tick
         clock.tick(FPS)
+        
+        print "Hero position: ", hero.x, hero.y
         
 
 def main():
