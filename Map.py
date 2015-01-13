@@ -30,7 +30,18 @@ class Map(object):
         self.world[14][12] = 3
         self.world[14][11] = 3
         self.world[14][10] = 3
-    
+        
+        self.world[14][8] = 3
+        self.world[14][7] = 3
+        self.world[14][6] = 3
+        self.world[14][6] = 3
+        
+        #A road
+        self.world[16][9] = 2
+        self.world[15][9] = 2
+        self.world[14][9] = 2
+        self.world[13][9] = 2
+        self.world[12][9] = 2
         
 Unknown = None
 Grass   = 1
